@@ -15,6 +15,22 @@
             }
 
             Console.WriteLine("countdown end");
+
+            //task 2 :
+
+            Console.Write("Enter a positive whole number: ");
+            int number2 = Convert.ToInt32(Console.ReadLine());
+
+            int sum = 0;
+
+            for (int i = 1; i <= number2; i++)
+            {
+                sum = sum + i;
+            }
+
+            Console.WriteLine("Sum = " + sum);
+
+            
         }
     }
 }
