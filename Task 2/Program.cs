@@ -30,7 +30,14 @@
 
             Console.WriteLine("Sum = " + sum);
 
-            
+            //task 3 : 
+            Console.Write("Enter a number: ");
+            int number3 = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine(number3 + " x " + i + " = " + (number3 * i));
+            }
         }
     }
 }
