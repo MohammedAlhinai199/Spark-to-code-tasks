@@ -59,7 +59,31 @@
                 }
             }
 
+            //task 5 :
+            int secretNumber = 42;
+            int guess;
+            int attempts = 0;
 
+            do
+            {
+                Console.Write("Guess the number: ");
+                guess = Convert.ToInt32(Console.ReadLine());
+                attempts++;
+
+                if (guess > secretNumber)
+                {
+                    Console.WriteLine("Too high");
+                }
+                else if (guess < secretNumber)
+                {
+                    Console.WriteLine("Too low");
+                }
+                else
+                {
+                    Console.WriteLine("Correct! It took you " + attempts + " attempts.");
+                }
+
+            } while (guess != secretNumber);
         }
     }
 }
