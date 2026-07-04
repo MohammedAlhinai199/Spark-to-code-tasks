@@ -106,6 +106,58 @@
                 Console.WriteLine("Error: Please enter valid whole numbers.");
             }
 
+            //task 7 :
+            int choice = 0;
+
+            while (choice != 3)
+            {
+                Console.WriteLine();
+                Console.WriteLine("1) Say Hello");
+                Console.WriteLine("2) Show Time-of-day Greeting");
+                Console.WriteLine("3) Exit");
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    choice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("Hello!");
+                            break;
+                        case 2:
+                            Console.WriteLine("Good day to you!");
+                            break;
+                        case 3:
+                            Console.WriteLine("Exiting...");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid option, please choose 1, 2, or 3.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error: Please enter a number (1, 2, or 3).");
+                }
+            }
+
+            //task 8 : 
+            Console.Write("Enter a positive whole number: ");
+            int n8 = Convert.ToInt32(Console.ReadLine());
+
+            int sumEven = 0;
+
+            for (int i = 1; i <= n8; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    sumEven = sumEven + i;
+                }
+            }
+
+            Console.WriteLine("Sum of even numbers = " + sumEven);
         }
     }
 }
