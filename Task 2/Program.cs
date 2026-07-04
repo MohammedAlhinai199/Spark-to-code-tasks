@@ -158,6 +158,166 @@
             }
 
             Console.WriteLine("Sum of even numbers = " + sumEven);
+
+            //task 9 :
+            int n9 = 0;
+            bool validInput = false;
+
+            do
+            {
+                try
+                {
+                    Console.Write("Enter a positive whole number: ");
+                    n9 = Convert.ToInt32(Console.ReadLine());
+
+                    if (n9 <= 0)
+                    {
+                        Console.WriteLine("Number must be positive, try again.");
+                    }
+                    else
+                    {
+                        validInput = true;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("That is not a valid whole number, try again.");
+                }
+
+            } while (!validInput);
+
+            int sum9 = 0;
+
+            for (int i = 1; i <= n9; i++)
+            {
+                sum9 = sum9 + i;
+            }
+
+            Console.WriteLine("Sum from 1 to " + n9 + " = " + sum9);
+
+
+            //task 10 :
+            string correctPin = "1234";
+            double balance = 100.000;
+            bool pinCorrect = false;
+            int pinAttempts = 0;
+
+            while (pinAttempts < 3 && pinCorrect == false)
+            {
+                try
+                {
+                    Console.Write("Enter your 4-digit PIN: ");
+                    string enteredPin = Console.ReadLine();
+
+                    if (enteredPin == correctPin)
+                    {
+                        pinCorrect = true;
+                    }
+                    else
+                    {
+                        pinAttempts = pinAttempts + 1;
+                        Console.WriteLine("Wrong PIN. Attempts left: " + (3 - pinAttempts));
+                    }
+                }
+                catch (FormatException)
+                {
+                    pinAttempts = pinAttempts + 1;
+                    Console.WriteLine("Invalid entry. Attempts left: " + (3 - pinAttempts));
+                }
+            }
+
+            if (pinCorrect == false)
+            {
+                Console.WriteLine("Card Blocked");
+            }
+            else
+            {
+                int atmChoice = 0;
+
+                while (atmChoice != 4)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("1) Deposit");
+                    Console.WriteLine("2) Withdraw");
+                    Console.WriteLine("3) Check Balance");
+                    Console.WriteLine("4) Exit");
+                    Console.Write("Choose an option: ");
+
+                    try
+                    {
+                        atmChoice = Convert.ToInt32(Console.ReadLine());
+
+                        switch (atmChoice)
+                        {
+                            case 1:
+                                try
+                                {
+                                    Console.Write("Enter deposit amount: ");
+                                    double depositAmount = Convert.ToDouble(Console.ReadLine());
+
+                                    if (depositAmount <= 0)
+                                    {
+                                        Console.WriteLine("Deposit amount must be positive.");
+                                    }
+                                    else
+                                    {
+                                        balance = balance + depositAmount;
+                                        Console.WriteLine("Deposit successful. New balance: " + balance + " OMR");
+                                    }
+                                }
+                                catch (FormatException)
+                                {
+                                    Console.WriteLine("Invalid amount entered.");
+                                }
+                                break;
+
+                            case 2:
+                                try
+                                {
+                                    Console.Write("Enter withdrawal amount: ");
+                                    double withdrawAmount = Convert.ToDouble(Console.ReadLine());
+
+                                    if (withdrawAmount <= 0)
+                                    {
+                                        Console.WriteLine("Withdrawal amount must be positive.");
+                                    }
+                                    else if (withdrawAmount > balance)
+                                    {
+                                        Console.WriteLine("Insufficient balance.");
+                                    }
+                                    else
+                                    {
+                                        balance = balance - withdrawAmount;
+                                        Console.WriteLine("Withdrawal successful. New balance: " + balance + " OMR");
+                                    }
+                                }
+                                catch (FormatException)
+                                {
+                                    Console.WriteLine("Invalid amount entered.");
+                                }
+                                break;
+
+                            case 3:
+                                Console.WriteLine("Current balance: " + balance + " OMR");
+                                break;
+
+                            case 4:
+                                Console.WriteLine("Thank you for using the ATM. Goodbye!");
+                                break;
+
+                            default:
+                                Console.WriteLine("Invalid option, please choose 1-4.");
+                                break;
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Please enter a valid number for your choice.");
+                    }
+                }
+            }
+
+
         }
     }
 }
