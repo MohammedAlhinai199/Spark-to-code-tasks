@@ -38,6 +38,28 @@
             {
                 Console.WriteLine(number3 + " x " + i + " = " + (number3 * i));
             }
+
+            //task 4 :
+            string correctPassword = "Spark2026";
+            string input;
+
+            while (true)
+            {
+                Console.Write("Enter password: ");
+                input = Console.ReadLine();
+
+                if (input == correctPassword)
+                {
+                    Console.WriteLine("Access Granted");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect password, try again");
+                }
+            }
+
+
         }
     }
 }
