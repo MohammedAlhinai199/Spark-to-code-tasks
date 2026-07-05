@@ -71,6 +71,32 @@ namespace Task_3
             }
             Console.WriteLine();
 
+            //task 6 
+            Console.WriteLine("=== Task 6: Password Strength Checker ===");
+            Console.Write("Enter a password: ");
+            string password = Console.ReadLine();
+
+            bool longEnough = password.Length >= 8;
+            bool containsForbiddenWord = password.ToLower().Contains("password");
+
+            if (longEnough && !containsForbiddenWord)
+            {
+                Console.WriteLine("Password Strength: Strong");
+            }
+            else if (!longEnough && containsForbiddenWord)
+            {
+                Console.WriteLine("Password Strength: Weak (too short AND contains the word 'password')");
+            }
+            else if (!longEnough)
+            {
+                Console.WriteLine("Password Strength: Weak (too short)");
+            }
+            else
+            {
+                Console.WriteLine("Password Strength: Weak (contains the word 'password')");
+            }
+            Console.WriteLine();
+
 
         }
     }
