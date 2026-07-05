@@ -185,6 +185,48 @@ namespace Task_3
             }
             Console.WriteLine();
 
+            // task 11 
+
+            Console.WriteLine("=== Task 11: One-Time Password (OTP) Generator ===");
+            Random random = new Random();
+            int otpCode = random.Next(1000, 10000); // 10000 is exclusive, so max possible is 9999
+
+            Console.WriteLine("Your OTP code is: " + otpCode);
+            Console.WriteLine("(In a real system this would be sent privately, not printed!)");
+
+            bool verified = false;
+
+            for (int attempt = 1; attempt <= 3; attempt++)
+            {
+                Console.Write("Attempt " + attempt + " - Enter the code: ");
+                string userInput = Console.ReadLine();
+
+                try
+                {
+                    int enteredCode = Convert.ToInt32(userInput);
+
+                    if (enteredCode == otpCode)
+                    {
+                        Console.WriteLine("Verified");
+                        verified = true;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect code.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input - please enter numbers only.");
+                }
+            }
+
+            if (!verified)
+            {
+                Console.WriteLine("Verification Failed");
+            }
+            Console.WriteLine();
 
         }
     }
