@@ -98,6 +98,27 @@ namespace Task_3
             Console.WriteLine();
 
 
+            //task 7 
+
+            Console.WriteLine("=== Task 7: Clean Name Comparator ===");
+            Console.Write("Enter the name (1st time): ");
+            string nameOne = Console.ReadLine();
+            Console.Write("Enter the name (2nd time): ");
+            string nameTwo = Console.ReadLine();
+
+            string cleanNameOne = nameOne.Trim().ToUpper();
+            string cleanNameTwo = nameTwo.Trim().ToUpper();
+
+            if (cleanNameOne == cleanNameTwo)
+            {
+                Console.WriteLine("Match");
+            }
+            else
+            {
+                Console.WriteLine("No Match");
+            }
+            Console.WriteLine();
+
         }
     }
 }
