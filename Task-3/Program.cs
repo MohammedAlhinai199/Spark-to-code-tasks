@@ -228,6 +228,38 @@ namespace Task_3
             }
             Console.WriteLine();
 
+
+            //task 12 
+
+            Console.WriteLine("=== Task 12: Birthday Insights ===");
+            Console.Write("Enter your date of birth (e.g. 2000-05-14): ");
+            string dobText = Console.ReadLine();
+
+            try
+            {
+                DateTime dob = DateTime.Parse(dobText);
+                DateTime today = DateTime.Today;
+
+                int age = today.Year - dob.Year;
+
+                if (today.Month < dob.Month || (today.Month == dob.Month && today.Day < dob.Day))
+                {
+                    age = age - 1;
+                }
+
+                DayOfWeek birthWeekday = dob.DayOfWeek;
+
+                Console.WriteLine("Your age is: " + age);
+                Console.WriteLine("You were born on a: " + birthWeekday);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid date format entered.");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("All tasks completed. Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }
