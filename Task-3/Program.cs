@@ -40,6 +40,17 @@ namespace Task_3
             Console.WriteLine("Lowercase: " + fullName.ToLower());
             Console.WriteLine("Character count: " + fullName.Length);
             Console.WriteLine();
+
+            //task 4 
+
+            Console.WriteLine("=== Task 4: Subscription End Date ===");
+            Console.Write("Enter number of free trial days: ");
+            int trialDays = Convert.ToInt32(Console.ReadLine());
+
+            DateTime startDate = DateTime.Today;
+            DateTime endDate = startDate.AddDays(trialDays);
+            Console.WriteLine("Trial ends on: " + endDate.ToString("yyyy-MM-dd"));
+            Console.WriteLine();
         }
     }
 }
