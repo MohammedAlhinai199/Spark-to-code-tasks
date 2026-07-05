@@ -51,6 +51,27 @@ namespace Task_3
             DateTime endDate = startDate.AddDays(trialDays);
             Console.WriteLine("Trial ends on: " + endDate.ToString("yyyy-MM-dd"));
             Console.WriteLine();
+
+            //task 5 
+
+            Console.WriteLine("=== Task 5: Grade Rounding System ===");
+            Console.Write("Enter your raw exam score (e.g. 74.6): ");
+            double rawScore = Convert.ToDouble(Console.ReadLine());
+
+            double roundedScore = Math.Round(rawScore, 0);
+            Console.WriteLine("Rounded score: " + roundedScore);
+
+            if (roundedScore >= 60)
+            {
+                Console.WriteLine("Result: Pass");
+            }
+            else
+            {
+                Console.WriteLine("Result: Fail");
+            }
+            Console.WriteLine();
+
+
         }
     }
 }
