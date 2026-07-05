@@ -163,6 +163,29 @@ namespace Task_3
             Console.WriteLine("Always rounded down (Floor): " + roundedDown);
             Console.WriteLine();
 
+            // task 10 
+
+            Console.WriteLine("=== Task 10: Word Position Finder ===");
+            Console.Write("Enter a full sentence: ");
+            string sentence = Console.ReadLine();
+            Console.Write("Enter a word to search for: ");
+            string searchWord = Console.ReadLine();
+
+            if (sentence.Contains(searchWord))
+            {
+                int firstPosition = sentence.IndexOf(searchWord);
+                int lastPosition = sentence.LastIndexOf(searchWord);
+
+                Console.WriteLine("First occurrence at position: " + firstPosition);
+                Console.WriteLine("Last occurrence at position: " + lastPosition);
+            }
+            else
+            {
+                Console.WriteLine("The word was not found in the sentence.");
+            }
+            Console.WriteLine();
+
+
         }
     }
 }
