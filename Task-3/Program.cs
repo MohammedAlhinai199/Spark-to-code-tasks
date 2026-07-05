@@ -148,6 +148,21 @@ namespace Task_3
             }
             Console.WriteLine();
 
+            //task 9 
+
+            Console.WriteLine("=== Task 9: Round Up / Round Down Explorer ===");
+            Console.Write("Enter a decimal number: ");
+            double roundExplorerNum = Convert.ToDouble(Console.ReadLine());
+
+            double nearestRound = Math.Round(roundExplorerNum);
+            double roundedUp = Math.Ceiling(roundExplorerNum);
+            double roundedDown = Math.Floor(roundExplorerNum);
+
+            Console.WriteLine("Rounded to nearest whole number: " + nearestRound);
+            Console.WriteLine("Always rounded up (Ceiling): " + roundedUp);
+            Console.WriteLine("Always rounded down (Floor): " + roundedDown);
+            Console.WriteLine();
+
         }
     }
 }
