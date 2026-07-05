@@ -17,6 +17,18 @@ namespace Task_3
             Console.WriteLine("The absolute difference is: " + difference);
             Console.WriteLine();
 
+
+            //Task 2 
+
+            Console.WriteLine("=== Task 2: Power & Root Explorer ===");
+            Console.Write("Enter a number: ");
+            double baseNum = Convert.ToDouble(Console.ReadLine());
+
+            double square = Math.Pow(baseNum, 2);
+            double squareRoot = Math.Sqrt(baseNum);
+            Console.WriteLine("Square: " + square);
+            Console.WriteLine("Square Root: " + squareRoot);
+            Console.WriteLine();
         }
     }
 }
