@@ -119,6 +119,35 @@ namespace Task_3
             }
             Console.WriteLine();
 
+            //task 8 
+
+            Console.WriteLine("=== Task 8: Membership Expiry Checker ===");
+            Console.Write("Enter membership start date (e.g. 2026-01-10): ");
+            string startDateText = Console.ReadLine();
+            Console.Write("Enter number of valid membership days: ");
+            int validDays = Convert.ToInt32(Console.ReadLine());
+
+            try
+            {
+                DateTime membershipStart = DateTime.Parse(startDateText);
+                DateTime membershipExpiry = membershipStart.AddDays(validDays);
+
+                if (membershipExpiry >= DateTime.Today)
+                {
+                    Console.WriteLine("Membership Status: Active");
+                }
+                else
+                {
+                    Console.WriteLine("Membership Status: Expired");
+                }
+                Console.WriteLine("Expiry date: " + membershipExpiry.ToString("yyyy-MM-dd"));
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid date format entered.");
+            }
+            Console.WriteLine();
+
         }
     }
 }
