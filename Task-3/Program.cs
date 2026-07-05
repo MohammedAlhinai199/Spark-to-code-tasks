@@ -29,6 +29,17 @@ namespace Task_3
             Console.WriteLine("Square: " + square);
             Console.WriteLine("Square Root: " + squareRoot);
             Console.WriteLine();
+
+            //task 3 
+
+            Console.WriteLine("=== Task 3: Name Formatter ===");
+            Console.Write("Enter your full name: ");
+            string fullName = Console.ReadLine();
+
+            Console.WriteLine("Uppercase: " + fullName.ToUpper());
+            Console.WriteLine("Lowercase: " + fullName.ToLower());
+            Console.WriteLine("Character count: " + fullName.Length);
+            Console.WriteLine();
         }
     }
 }
