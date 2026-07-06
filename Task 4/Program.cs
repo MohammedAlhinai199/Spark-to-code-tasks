@@ -48,6 +48,11 @@
             double t6Perimeter = CalculatePerimeter(t6Length, t6Width);
             Console.WriteLine("Area: " + t6Area);
             Console.WriteLine("Perimeter: " + t6Perimeter);
+            Console.WriteLine("===== Task 7: Grade Letter =====");
+            Console.Write("Enter a score (0-100): ");
+            int t7Score = Convert.ToInt32(Console.ReadLine());
+            string t7Grade = GetGradeLetter(t7Score);
+            Console.WriteLine("Score " + t7Score + " corresponds to grade: " + t7Grade);
         }
 
         // TASK 2 - Square Number Function
@@ -92,6 +97,32 @@
         static double CalculatePerimeter(double length, double width)
         {
             return 2 * (length + width);
+        }
+
+        // TASK 7 - Grade Letter Function
+ 
+        static string GetGradeLetter(int score)
+        {
+            if (score >= 90)
+            {
+                return "A";
+            }
+            else if (score >= 80)
+            {
+                return "B";
+            }
+            else if (score >= 70)
+            {
+                return "C";
+            }
+            else if (score >= 60)
+            {
+                return "D";
+            }
+            else
+            {
+                return "F";
+            }
         }
     }
 }
