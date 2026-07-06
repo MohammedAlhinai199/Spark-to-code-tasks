@@ -27,6 +27,27 @@
             Console.WriteLine(t3Celsius + " C is equal to " + t3Fahrenheit + " F");
             Console.WriteLine("===== Task 4: Fixed Menu Display =====");
             DisplayMenu();
+            Console.WriteLine("===== Task 5: Even or Odd =====");
+            Console.Write("Enter a number: ");
+            int t5Number = Convert.ToInt32(Console.ReadLine());
+            bool t5IsEven = IsEven(t5Number);
+            if (t5IsEven)
+            {
+                Console.WriteLine(t5Number + " is Even");
+            }
+            else
+            {
+                Console.WriteLine(t5Number + " is Odd");
+            }
+            Console.WriteLine("===== Task 6: Rectangle Area & Perimeter =====");
+            Console.Write("Enter the length of the rectangle: ");
+            double t6Length = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter the width of the rectangle: ");
+            double t6Width = Convert.ToDouble(Console.ReadLine());
+            double t6Area = CalculateRectangleArea(t6Length, t6Width);
+            double t6Perimeter = CalculatePerimeter(t6Length, t6Width);
+            Console.WriteLine("Area: " + t6Area);
+            Console.WriteLine("Perimeter: " + t6Perimeter);
         }
 
         // TASK 2 - Square Number Function
@@ -52,6 +73,25 @@
             Console.WriteLine("1) Start");
             Console.WriteLine("2) Help");
             Console.WriteLine("3) Exit");
+        }
+
+        // TASK 5 - Even or Odd Function
+        
+        static bool IsEven(int number)
+        {
+            return number % 2 == 0;
+        }
+
+        // TASK 6 - Rectangle Area & Perimeter Functions
+        
+        static double CalculateRectangleArea(double length, double width)
+        {
+            return length * width;
+        }
+
+        static double CalculatePerimeter(double length, double width)
+        {
+            return 2 * (length + width);
         }
     }
 }
