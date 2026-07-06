@@ -15,6 +15,19 @@
             Console.Write("Enter your name: ");
             string t1Name = Console.ReadLine();
             PrintWelcome(t1Name);
+            Console.WriteLine("===== Task 2: Square Number =====");
+            Console.Write("Enter a number to square: ");
+            int t2Number = Convert.ToInt32(Console.ReadLine());
+            int t2Result = Square(t2Number);
+            Console.WriteLine("The square of " + t2Number + " is " + t2Result);
         }
+
+        // TASK 2 - Square Number Function
+
+        static int Square(int number)
+        {
+            return number * number;
+        }
+
     }
 }
