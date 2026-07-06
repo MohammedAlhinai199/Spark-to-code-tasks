@@ -57,6 +57,16 @@
             Console.Write("Enter a starting number for the countdown: ");
             int t8Start = Convert.ToInt32(Console.ReadLine());
             Countdown(t8Start);
+
+            Console.WriteLine("===== Task 9: Overloaded Multiply =====");
+            int t9IntResult = Multiply(4, 5);
+            Console.WriteLine("Multiply(int, int) -> 4 * 5 = " + t9IntResult);
+
+            double t9DoubleResult = Multiply(2.5, 4.0);
+            Console.WriteLine("Multiply(double, double) -> 2.5 * 4.0 = " + t9DoubleResult);
+
+            int t9ThreeIntResult = Multiply(2, 3, 4);
+            Console.WriteLine("Multiply(int, int, int) -> 2 * 3 * 4 = " + t9ThreeIntResult);
         }
 
         // TASK 2 - Square Number Function
@@ -136,6 +146,23 @@
                 {
                     Console.WriteLine(i);
                 }
+            }
+
+            // TASK 9 - Overloaded Multiply Function
+            
+            static int Multiply(int a, int b)
+            {
+                return a * b;
+            }
+
+            static double Multiply(double a, double b)
+            {
+                return a * b;
+            }
+
+            static int Multiply(int a, int b, int c)
+            {
+                return a * b * c;
             }
         }
     }
