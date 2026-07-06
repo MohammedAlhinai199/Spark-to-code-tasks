@@ -25,6 +25,8 @@
             double t3Celsius = Convert.ToDouble(Console.ReadLine());
             double t3Fahrenheit = CelsiusToFahrenheit(t3Celsius);
             Console.WriteLine(t3Celsius + " C is equal to " + t3Fahrenheit + " F");
+            Console.WriteLine("===== Task 4: Fixed Menu Display =====");
+            DisplayMenu();
         }
 
         // TASK 2 - Square Number Function
@@ -41,6 +43,15 @@
         {
             double fahrenheit = (celsius * 9 / 5) + 32;
             return fahrenheit;
+        }
+
+        // TASK 4 - Fixed Menu Display Function
+       
+        static void DisplayMenu()
+        {
+            Console.WriteLine("1) Start");
+            Console.WriteLine("2) Help");
+            Console.WriteLine("3) Exit");
         }
     }
 }
