@@ -53,6 +53,10 @@
             int t7Score = Convert.ToInt32(Console.ReadLine());
             string t7Grade = GetGradeLetter(t7Score);
             Console.WriteLine("Score " + t7Score + " corresponds to grade: " + t7Grade);
+            Console.WriteLine("===== Task 8: Countdown =====");
+            Console.Write("Enter a starting number for the countdown: ");
+            int t8Start = Convert.ToInt32(Console.ReadLine());
+            Countdown(t8Start);
         }
 
         // TASK 2 - Square Number Function
@@ -122,6 +126,16 @@
             else
             {
                 return "F";
+            }
+
+            // TASK 8 - Countdown Function
+            
+            static void Countdown(int start)
+            {
+                for (int i = start; i >= 1; i--)
+                {
+                    Console.WriteLine(i);
+                }
             }
         }
     }
