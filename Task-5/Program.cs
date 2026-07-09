@@ -17,6 +17,7 @@ namespace Task_5
             Task6_FilteredShoppingList();
             Task7_HighScorePodium();
             Task8_UndoLastAction();
+            Task9_GradeAnalyzerWithFunctions();
         }
 
         static void Task1_FixedGradesArray()
@@ -185,6 +186,49 @@ namespace Task_5
             {
                 Console.WriteLine("- " + action);
             }
+        }
+
+        static void Task9_GradeAnalyzerWithFunctions()
+        {
+            Console.Write("\nHow many grades do you want to enter? ");
+            int count = Convert.ToInt32(Console.ReadLine());
+
+            List<int> grades = new List<int>();
+            for (int i = 0; i < count; i++)
+            {
+                Console.Write("Enter grade #" + (i + 1) + ": ");
+                int grade = Convert.ToInt32(Console.ReadLine());
+                grades.Add(grade);
+            }
+
+            double average = CalculateAverage(grades);
+            int firstFailing = FindFirstFailing(grades);
+
+            Console.WriteLine("\nAverage grade: " + average);
+
+            if (firstFailing == 0)
+            {
+                Console.WriteLine("No failing grade found (all grades are 60 or above).");
+            }
+            else
+            {
+                Console.WriteLine("First failing grade: " + firstFailing);
+            }
+        }
+
+        static double CalculateAverage(List<int> gradeList)
+        {
+            int sum = 0;
+            for (int i = 0; i < gradeList.Count; i++)
+            {
+                sum += gradeList[i];
+            }
+            return (double)sum / gradeList.Count;
+        }
+
+        static int FindFirstFailing(List<int> gradeList)
+        {
+            return gradeList.Find(x => x < 60);
         }
     }
 }
