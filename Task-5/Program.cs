@@ -13,6 +13,7 @@ namespace Task_5
             Task2_DynamicToDoList();
             Task3_BrowsingHistoryStack();
             Task4_CustomerServiceQueue();
+            Task5_ArrayGradeRange();
         }
 
         static void Task1_FixedGradesArray()
@@ -76,6 +77,29 @@ namespace Task_5
 
             string servedCustomer = customerQueue.Dequeue();
             Console.WriteLine("\nNow serving: " + servedCustomer);
+        }
+
+        static void Task5_ArrayGradeRange()
+        {
+            int[] grades = new int[5];
+            for (int i = 0; i < grades.Length; i++)
+            {
+                Console.Write("Enter grade #" + (i + 1) + ": ");
+                grades[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            Array.Sort(grades);
+
+            int sum = 0;
+            for (int i = 0; i < grades.Length; i++)
+            {
+                sum += grades[i];
+            }
+            double average = (double)sum / grades.Length;
+
+            Console.WriteLine("\nLowest grade: " + grades[0]);
+            Console.WriteLine("Highest grade: " + grades[grades.Length - 1]);
+            Console.WriteLine("Average grade: " + average);
         }
     }
 }
