@@ -14,6 +14,7 @@ namespace Task_5
             Task3_BrowsingHistoryStack();
             Task4_CustomerServiceQueue();
             Task5_ArrayGradeRange();
+            Task6_FilteredShoppingList();
         }
 
         static void Task1_FixedGradesArray()
@@ -100,6 +101,41 @@ namespace Task_5
             Console.WriteLine("\nLowest grade: " + grades[0]);
             Console.WriteLine("Highest grade: " + grades[grades.Length - 1]);
             Console.WriteLine("Average grade: " + average);
+        }
+
+        static void Task6_FilteredShoppingList()
+        {
+            List<string> shoppingList = new List<string>();
+
+            Console.WriteLine("\nEnter shopping items one by one. Type 'done' when finished.");
+            while (true)
+            {
+                Console.Write("Item: ");
+                string item = Console.ReadLine();
+
+                if (item == "done")
+                {
+                    break;
+                }
+
+                shoppingList.Add(item);
+            }
+
+            Console.WriteLine("\nShopping list BEFORE removal:");
+            foreach (string item in shoppingList)
+            {
+                Console.WriteLine("- " + item);
+            }
+
+            Console.Write("\nEnter the item you want to remove: ");
+            string itemToRemove = Console.ReadLine();
+            shoppingList.Remove(itemToRemove);
+
+            Console.WriteLine("\nShopping list AFTER removal:");
+            foreach (string item in shoppingList)
+            {
+                Console.WriteLine("- " + item);
+            }
         }
     }
 }
