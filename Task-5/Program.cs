@@ -7,7 +7,7 @@ namespace Task_5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("=== Session 5 Practice Tasks ===");
+            Console.WriteLine("");
 
             Task1_FixedGradesArray();
             Task2_DynamicToDoList();
@@ -18,6 +18,7 @@ namespace Task_5
             Task7_HighScorePodium();
             Task8_UndoLastAction();
             Task9_GradeAnalyzerWithFunctions();
+            Task10_PrintQueueManager();
         }
 
         static void Task1_FixedGradesArray()
@@ -229,6 +230,58 @@ namespace Task_5
         static int FindFirstFailing(List<int> gradeList)
         {
             return gradeList.Find(x => x < 60);
+        }
+
+        static void Task10_PrintQueueManager()
+        {
+            Queue<string> printQueue = new Queue<string>();
+
+            Console.WriteLine("\nEnter print job names one by one. Type 'done' when finished.");
+            while (true)
+            {
+                Console.Write("Job name: ");
+                string job = Console.ReadLine();
+
+                if (job == "done")
+                {
+                    break;
+                }
+
+                printQueue.Enqueue(job);
+            }
+
+            Console.WriteLine("\nPrint queue BEFORE cancellation:");
+            foreach (string job in printQueue)
+            {
+                Console.WriteLine("- " + job);
+            }
+
+            Console.Write("\nEnter the name of the job to cancel: ");
+            string jobToCancel = Console.ReadLine();
+
+            printQueue = RemoveJob(printQueue, jobToCancel);
+
+            Console.WriteLine("\nPrint queue AFTER cancellation:");
+            foreach (string job in printQueue)
+            {
+                Console.WriteLine("- " + job);
+            }
+        }
+
+        static Queue<string> RemoveJob(Queue<string> jobs, string jobNameToRemove)
+        {
+            Queue<string> updatedQueue = new Queue<string>();
+
+            while (jobs.Count > 0)
+            {
+                string currentJob = jobs.Dequeue();
+                if (currentJob != jobNameToRemove)
+                {
+                    updatedQueue.Enqueue(currentJob);
+                }
+            }
+
+            return updatedQueue;
         }
     }
 }
