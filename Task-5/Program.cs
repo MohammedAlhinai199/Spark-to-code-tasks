@@ -15,6 +15,7 @@ namespace Task_5
             Task4_CustomerServiceQueue();
             Task5_ArrayGradeRange();
             Task6_FilteredShoppingList();
+            Task7_HighScorePodium();
         }
 
         static void Task1_FixedGradesArray()
@@ -136,6 +137,25 @@ namespace Task_5
             {
                 Console.WriteLine("- " + item);
             }
+        }
+
+        static void Task7_HighScorePodium()
+        {
+            List<int> scores = new List<int>();
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write("Enter score #" + (i + 1) + ": ");
+                int score = Convert.ToInt32(Console.ReadLine());
+                scores.Add(score);
+            }
+
+            scores.Sort();
+            scores.Reverse();
+
+            Console.WriteLine("\n--- Podium ---");
+            Console.WriteLine("1st place: " + scores[0]);
+            Console.WriteLine("2nd place: " + scores[1]);
+            Console.WriteLine("3rd place: " + scores[2]);
         }
     }
 }
