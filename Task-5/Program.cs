@@ -12,6 +12,7 @@ namespace Task_5
             Task1_FixedGradesArray();
             Task2_DynamicToDoList();
             Task3_BrowsingHistoryStack();
+            Task4_CustomerServiceQueue();
         }
 
         static void Task1_FixedGradesArray()
@@ -61,6 +62,20 @@ namespace Task_5
 
             string previousPage = history.Pop();
             Console.WriteLine("\nYou pressed 'back'. You landed on: " + previousPage);
+        }
+
+        static void Task4_CustomerServiceQueue()
+        {
+            Queue<string> customerQueue = new Queue<string>();
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("Enter customer name #" + (i + 1) + ": ");
+                string name = Console.ReadLine();
+                customerQueue.Enqueue(name);
+            }
+
+            string servedCustomer = customerQueue.Dequeue();
+            Console.WriteLine("\nNow serving: " + servedCustomer);
         }
     }
 }
