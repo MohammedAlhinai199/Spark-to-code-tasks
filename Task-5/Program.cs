@@ -16,6 +16,7 @@ namespace Task_5
             Task5_ArrayGradeRange();
             Task6_FilteredShoppingList();
             Task7_HighScorePodium();
+            Task8_UndoLastAction();
         }
 
         static void Task1_FixedGradesArray()
@@ -156,6 +157,34 @@ namespace Task_5
             Console.WriteLine("1st place: " + scores[0]);
             Console.WriteLine("2nd place: " + scores[1]);
             Console.WriteLine("3rd place: " + scores[2]);
+        }
+
+        static void Task8_UndoLastAction()
+        {
+            Stack<string> actions = new Stack<string>();
+
+            Console.WriteLine("\nEnter editor actions one by one. Type 'stop' when finished.");
+            while (true)
+            {
+                Console.Write("Action: ");
+                string action = Console.ReadLine();
+
+                if (action == "stop")
+                {
+                    break;
+                }
+
+                actions.Push(action);
+            }
+
+            Console.WriteLine("\nUndo #1: " + actions.Pop());
+            Console.WriteLine("Undo #2: " + actions.Pop());
+
+            Console.WriteLine("\nRemaining actions on the stack:");
+            foreach (string action in actions)
+            {
+                Console.WriteLine("- " + action);
+            }
         }
     }
 }
