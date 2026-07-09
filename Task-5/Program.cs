@@ -7,10 +7,11 @@ namespace Task_5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine();
+            Console.WriteLine("=== Session 5 Practice Tasks ===");
 
             Task1_FixedGradesArray();
             Task2_DynamicToDoList();
+            Task3_BrowsingHistoryStack();
         }
 
         static void Task1_FixedGradesArray()
@@ -46,6 +47,20 @@ namespace Task_5
                 Console.WriteLine(number + ". " + task);
                 number++;
             }
+        }
+
+        static void Task3_BrowsingHistoryStack()
+        {
+            Stack<string> history = new Stack<string>();
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("Enter website URL #" + (i + 1) + ": ");
+                string url = Console.ReadLine();
+                history.Push(url);
+            }
+
+            string previousPage = history.Pop();
+            Console.WriteLine("\nYou pressed 'back'. You landed on: " + previousPage);
         }
     }
 }
