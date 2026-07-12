@@ -270,7 +270,20 @@ namespace BankingSystemApp
 
         static void ListAllAccounts()
         {
-            // TODO
+            static void ListAllAccounts()
+            {
+                if (customerNames.Count == 0)
+                {
+                    Console.WriteLine("No accounts exist yet.");
+                    return;
+                }
+
+                Console.WriteLine("\n--- All Accounts ---");
+                for (int i = 0; i < customerNames.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. Name: {customerNames[i]}, Account Number: {accountNumbers[i]}, Balance: {balances[i]}");
+                }
+            }
         }
 
         static void FindRichestCustomer()
