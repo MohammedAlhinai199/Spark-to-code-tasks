@@ -75,7 +75,44 @@ namespace BankingSystemApp
 
         static void AddAccount()
         {
-            // TODO
+            static void AddAccount()
+            {
+                Console.Write("Enter customer name: ");
+                string name = Console.ReadLine();
+
+                Console.Write("Enter new account number: ");
+                string accNum = Console.ReadLine();
+
+                if (accountNumbers.Contains(accNum))
+                {
+                    Console.WriteLine("Error: An account with this number already exists.");
+                    return;
+                }
+
+                double initialDeposit;
+                try
+                {
+                    Console.Write("Enter initial deposit amount: ");
+                    initialDeposit = double.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error: Invalid amount entered.");
+                    return;
+                }
+
+                if (initialDeposit < 0)
+                {
+                    Console.WriteLine("Error: Initial deposit cannot be negative.");
+                    return;
+                }
+
+                customerNames.Add(name);
+                accountNumbers.Add(accNum);
+                balances.Add(initialDeposit);
+
+                Console.WriteLine($"Account created successfully! Name: {name}, Account Number: {accNum}, Balance: {initialDeposit}");
+            }
         }
 
         static void DepositMoney()
