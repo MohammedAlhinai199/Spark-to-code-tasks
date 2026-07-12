@@ -220,7 +220,52 @@ namespace BankingSystemApp
 
         static void TransferAmount()
         {
-            // TODO
+            static void TransferAmount()
+            {
+                Console.Write("Enter sender's account number: ");
+                string senderAcc = Console.ReadLine();
+
+                Console.Write("Enter receiver's account number: ");
+                string receiverAcc = Console.ReadLine();
+
+                int senderIndex = accountNumbers.IndexOf(senderAcc);
+                int receiverIndex = accountNumbers.IndexOf(receiverAcc);
+
+                if (senderIndex == -1 || receiverIndex == -1)
+                {
+                    Console.WriteLine("Error: One or both account numbers do not exist.");
+                    return;
+                }
+
+                double transferAmount;
+                try
+                {
+                    Console.Write("Enter transfer amount: ");
+                    transferAmount = double.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error: Invalid amount entered.");
+                    return;
+                }
+
+                if (transferAmount <= 0)
+                {
+                    Console.WriteLine("Error: Transfer amount must be positive.");
+                    return;
+                }
+
+                if (transferAmount > balances[senderIndex])
+                {
+                    Console.WriteLine("Error: Insufficient balance for this transfer.");
+                    return;
+                }
+
+                balances[senderIndex] -= transferAmount;
+                balances[receiverIndex] += transferAmount;
+
+                Console.WriteLine($"Transfer successful. {senderAcc} new balance: {balances[senderIndex]}. {receiverAcc} new balance: {balances[receiverIndex]}");
+            }
         }
 
         static void ListAllAccounts()
