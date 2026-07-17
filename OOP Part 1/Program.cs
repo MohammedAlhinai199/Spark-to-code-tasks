@@ -193,6 +193,8 @@ namespace BankStudentManagementApp
                     case 7: Case7_CompareBalances(); break;
                     case 8: Case8_RestockAndCheck(); break;
                     case 9: Case9_TransferBetweenAccounts(); break;
+                    case 10: Case10_UpdateGradeValidated(); break;
+                    case 11: Case11_StudentReportCard(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -346,6 +348,43 @@ namespace BankStudentManagementApp
             {
                 Console.WriteLine("Transfer failed: insufficient funds in source account.");
             }
+        }
+
+        static void Case10_UpdateGradeValidated()
+        {
+            Student s = SelectStudent();
+            Console.Write("Enter new grade: ");
+            string input = Console.ReadLine();
+            int newGrade;
+            bool isNumber = int.TryParse(input, out newGrade);
+
+            if (!isNumber)
+            {
+                Console.WriteLine("Invalid input: grade must be a number. No change made.");
+                return;
+            }
+
+            if (newGrade < 0 || newGrade > 100)
+            {
+                Console.WriteLine("Invalid grade: must be between 0 and 100. No change made.");
+                return;
+            }
+
+            s.Grade = newGrade;
+            Console.WriteLine("Grade updated to: " + s.Grade);
+        }
+
+        static void Case11_StudentReportCard()
+        {
+            Student s = SelectStudent();
+            string result;
+            if (s.Grade >= 60) result = "Pass"; else result = "Fail";
+
+            Console.WriteLine("----- Report Card -----");
+            Console.WriteLine("Name: " + s.Name);
+            Console.WriteLine("Address: " + s.Address);
+            Console.WriteLine("Grade: " + s.Grade);
+            Console.WriteLine("Result: " + result);
         }
     }
 }
