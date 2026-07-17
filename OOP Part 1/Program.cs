@@ -65,12 +65,58 @@ namespace BankStudentManagementApp
         }
     }
 
+    class Product
+    {
+        public string ProductName;
+        public double Price;
+        public int StockQuantity;
+
+        public void Sell(int quantity)
+        {
+            if (StockQuantity >= quantity)
+            {
+                StockQuantity -= quantity;
+            }
+            else
+            {
+                Console.WriteLine("Not enough stock available.");
+            }
+            LogTransaction();
+        }
+
+        public void Restock(int quantity)
+        {
+            StockQuantity += quantity;
+            LogTransaction();
+        }
+
+        public double GetInventoryValue()
+        {
+            PrintDetails();
+            return Price * StockQuantity;
+        }
+
+        private void PrintDetails()
+        {
+            Console.WriteLine("Product Name: " + ProductName);
+            Console.WriteLine("Price: " + Price);
+            Console.WriteLine("Stock Quantity: " + StockQuantity);
+        }
+
+        private void LogTransaction()
+        {
+            Console.WriteLine("Transaction logged for " + ProductName + ".");
+        }
+    }
+
     class Program
     {
         static BankAccount acc1 = new BankAccount();
         static BankAccount acc2 = new BankAccount();
         static Student std1 = new Student();
         static Student std2 = new Student();
+        static Product prod1 = new Product();
+        static Product prod2 = new Product();
 
         static void Main(string[] args)
         {
@@ -89,6 +135,14 @@ namespace BankStudentManagementApp
             std2.Name = "Ahmed";
             std2.Address = "Muscat";
             std2.Grade = 70;
+
+            prod1.ProductName = "Wireless Mouse";
+            prod1.Price = 5.500;
+            prod1.StockQuantity = 50;
+
+            prod2.ProductName = "Mechanical Keyboard";
+            prod2.Price = 15.750;
+            prod2.StockQuantity = 20;
 
             bool running = true;
 
@@ -134,7 +188,9 @@ namespace BankStudentManagementApp
                     case 2: Case2_UpdateStudentAddress(); break;
                     case 3: Case3_MakeDeposit(); break;
                     case 4: Case4_MakeWithdrawal(); break;
+                    case 5: Case5_ViewProductDetails(); break;
                     case 6: Case6_RegisterStudent(); break;
+                    case 8: Case8_RestockAndCheck(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -166,6 +222,17 @@ namespace BankStudentManagementApp
             int.TryParse(Console.ReadLine(), out choice);
             if (choice == 1) return std1;
             else return std2;
+        }
+
+        static Product SelectProduct()
+        {
+            Console.WriteLine("1. " + prod1.ProductName);
+            Console.WriteLine("2. " + prod2.ProductName);
+            Console.Write("Choose product (1 or 2): ");
+            int choice;
+            int.TryParse(Console.ReadLine(), out choice);
+            if (choice == 1) return prod1;
+            else return prod2;
         }
 
         static void Case1_ViewAccountDetails()
@@ -203,6 +270,13 @@ namespace BankStudentManagementApp
             Console.WriteLine("Updated balance: " + acc.Balance);
         }
 
+        static void Case5_ViewProductDetails()
+        {
+            Product p = SelectProduct();
+            double value = p.GetInventoryValue();
+            Console.WriteLine("Total Inventory Value: " + value);
+        }
+
         static void Case6_RegisterStudent()
         {
             Student s = SelectStudent();
@@ -210,6 +284,28 @@ namespace BankStudentManagementApp
             string email = Console.ReadLine();
             s.Register(email);
             Console.WriteLine(s.Name + " has been registered successfully.");
+        }
+
+        static void Case8_RestockAndCheck()
+        {
+            Product p = SelectProduct();
+            Console.Write("Enter quantity to restock: ");
+            int qty;
+            int.TryParse(Console.ReadLine(), out qty);
+            p.Restock(qty);
+
+            if (p.StockQuantity < 10)
+            {
+                Console.WriteLine("Stock Level: Low");
+            }
+            else if (p.StockQuantity <= 49)
+            {
+                Console.WriteLine("Stock Level: Moderate");
+            }
+            else
+            {
+                Console.WriteLine("Stock Level: Well Stocked");
+            }
         }
     }
 }
