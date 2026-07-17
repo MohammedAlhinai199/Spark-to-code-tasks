@@ -197,6 +197,8 @@ namespace BankStudentManagementApp
                     case 11: Case11_StudentReportCard(); break;
                     case 12: Case12_AccountHealthStatus(); break;
                     case 13: Case13_BulkSale(); break;
+                    case 14: Case14_ScholarshipEligibility(); break;
+                    case 15: Case15_FullBalanceTopUp(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -423,6 +425,48 @@ namespace BankStudentManagementApp
                 p.Sell(qty);
                 double revenue = qty * p.Price;
                 Console.WriteLine("Sale successful. Total revenue: " + revenue);
+            }
+        }
+        static void Case14_ScholarshipEligibility()
+        {
+            Console.WriteLine("Select student:");
+            Student s = SelectStudent();
+            Console.WriteLine("Select account:");
+            BankAccount acc = SelectAccount();
+
+            if (s.Grade >= 80 && acc.Balance >= 100)
+            {
+                Console.WriteLine("Eligible");
+            }
+            else
+            {
+                Console.WriteLine("Not Eligible:");
+                if (s.Grade < 80)
+                {
+                    Console.WriteLine("- Grade is below 80.");
+                }
+                if (acc.Balance < 100)
+                {
+                    Console.WriteLine("- Balance is below 100.");
+                }
+            }
+        }
+
+        static void Case15_FullBalanceTopUp()
+        {
+            BankAccount acc = SelectAccount();
+            double before = acc.Balance;
+
+            if (before < 50)
+            {
+                double topUp = 100 - before;
+                acc.Deposit(topUp);
+                Console.WriteLine("Balance before: " + before);
+                Console.WriteLine("Balance after: " + acc.Balance);
+            }
+            else
+            {
+                Console.WriteLine("No top-up needed. Current balance: " + before);
             }
         }
     }
