@@ -190,7 +190,9 @@ namespace BankStudentManagementApp
                     case 4: Case4_MakeWithdrawal(); break;
                     case 5: Case5_ViewProductDetails(); break;
                     case 6: Case6_RegisterStudent(); break;
+                    case 7: Case7_CompareBalances(); break;
                     case 8: Case8_RestockAndCheck(); break;
+                    case 9: Case9_TransferBetweenAccounts(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -286,6 +288,22 @@ namespace BankStudentManagementApp
             Console.WriteLine(s.Name + " has been registered successfully.");
         }
 
+        static void Case7_CompareBalances()
+        {
+            if (acc1.Balance > acc2.Balance)
+            {
+                Console.WriteLine(acc1.HolderName + " has more money.");
+            }
+            else if (acc2.Balance > acc1.Balance)
+            {
+                Console.WriteLine(acc2.HolderName + " has more money.");
+            }
+            else
+            {
+                Console.WriteLine("Both accounts have equal balances.");
+            }
+        }
+
         static void Case8_RestockAndCheck()
         {
             Product p = SelectProduct();
@@ -305,6 +323,28 @@ namespace BankStudentManagementApp
             else
             {
                 Console.WriteLine("Stock Level: Well Stocked");
+            }
+        }
+
+        static void Case9_TransferBetweenAccounts()
+        {
+            Console.WriteLine("Select source account:");
+            BankAccount source = SelectAccount();
+            Console.WriteLine("Select destination account:");
+            BankAccount destination = SelectAccount();
+            Console.Write("Enter transfer amount: ");
+            double amount;
+            double.TryParse(Console.ReadLine(), out amount);
+
+            if (source.Balance >= amount)
+            {
+                source.Withdraw(amount);
+                destination.Deposit(amount);
+                Console.WriteLine("Transfer successful.");
+            }
+            else
+            {
+                Console.WriteLine("Transfer failed: insufficient funds in source account.");
             }
         }
     }
