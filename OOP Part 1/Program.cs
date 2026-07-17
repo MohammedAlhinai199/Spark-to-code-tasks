@@ -8,6 +8,17 @@ namespace BankStudentManagementApp
         public string HolderName;
         public double Balance;
 
+        public BankAccount()
+        {
+        }
+
+        public BankAccount(int accountNumber, string holderName, double startingBalance)
+        {
+            AccountNumber = accountNumber;
+            HolderName = holderName;
+            Balance = startingBalance;
+        }
+
         public void Deposit(double amount)
         {
             Balance += amount;
@@ -199,6 +210,7 @@ namespace BankStudentManagementApp
                     case 13: Case13_BulkSale(); break;
                     case 14: Case14_ScholarshipEligibility(); break;
                     case 15: Case15_FullBalanceTopUp(); break;
+                    case 16: Case16_QuickAccountOpening(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -468,6 +480,21 @@ namespace BankStudentManagementApp
             {
                 Console.WriteLine("No top-up needed. Current balance: " + before);
             }
+        }
+        static void Case16_QuickAccountOpening()
+        {
+            Console.Write("Enter new account number: ");
+            int accNum;
+            int.TryParse(Console.ReadLine(), out accNum);
+            Console.Write("Enter holder name: ");
+            string name = Console.ReadLine();
+            Console.Write("Enter starting balance: ");
+            double startBalance;
+            double.TryParse(Console.ReadLine(), out startBalance);
+
+            BankAccount newAccount = new BankAccount(accNum, name, startBalance);
+            Console.WriteLine("New account created:");
+            newAccount.CheckBalance();
         }
     }
 }
