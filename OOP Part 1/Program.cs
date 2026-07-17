@@ -79,7 +79,12 @@ namespace BankStudentManagementApp
         {
             return studentCount;
         }
+        private int pin;
 
+        public int PIN
+        {
+            set { pin = value; }
+        }
         public void Register(string Email)
         {
             email = Email;
@@ -229,6 +234,7 @@ namespace BankStudentManagementApp
                     case 16: Case16_QuickAccountOpening(); break;
                     case 17: Case17_TotalStudentsCounter(); break;
                     case 18: Case18_OverdrawnCheck(); break;
+                    case 19: Case19_SetStudentPIN(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -533,6 +539,16 @@ namespace BankStudentManagementApp
             {
                 Console.WriteLine(acc.HolderName + "'s account is not overdrawn.");
             }
+        }
+
+        static void Case19_SetStudentPIN()
+        {
+            Student s = SelectStudent();
+            Console.Write("Enter a 4-digit PIN: ");
+            int pin;
+            int.TryParse(Console.ReadLine(), out pin);
+            s.PIN = pin;
+            Console.WriteLine("PIN set successfully for " + s.Name + ".");
         }
     }
 }
