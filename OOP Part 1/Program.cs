@@ -195,6 +195,8 @@ namespace BankStudentManagementApp
                     case 9: Case9_TransferBetweenAccounts(); break;
                     case 10: Case10_UpdateGradeValidated(); break;
                     case 11: Case11_StudentReportCard(); break;
+                    case 12: Case12_AccountHealthStatus(); break;
+                    case 13: Case13_BulkSale(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -385,6 +387,43 @@ namespace BankStudentManagementApp
             Console.WriteLine("Address: " + s.Address);
             Console.WriteLine("Grade: " + s.Grade);
             Console.WriteLine("Result: " + result);
+        }
+
+        static void Case12_AccountHealthStatus()
+        {
+            BankAccount acc = SelectAccount();
+            if (acc.Balance < 50)
+            {
+                Console.WriteLine("Status: Low Balance");
+            }
+            else if (acc.Balance <= 1000)
+            {
+                Console.WriteLine("Status: Healthy");
+            }
+            else
+            {
+                Console.WriteLine("Status: Premium");
+            }
+        }
+
+        static void Case13_BulkSale()
+        {
+            Product p = SelectProduct();
+            Console.Write("Enter quantity to sell: ");
+            int qty;
+            int.TryParse(Console.ReadLine(), out qty);
+
+            if (p.StockQuantity < qty)
+            {
+                int needed = qty - p.StockQuantity;
+                Console.WriteLine("Not enough stock. You need " + needed + " more unit(s) to fulfill this order.");
+            }
+            else
+            {
+                p.Sell(qty);
+                double revenue = qty * p.Price;
+                Console.WriteLine("Sale successful. Total revenue: " + revenue);
+            }
         }
     }
 }
