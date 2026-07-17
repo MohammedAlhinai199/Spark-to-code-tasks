@@ -63,6 +63,17 @@ namespace BankStudentManagementApp
         public string Address;
         private string email;
         int age;
+        private static int studentCount = 0;
+
+        public Student()
+        {
+            studentCount++;
+        }
+
+        public static int GetStudentCount()
+        {
+            return studentCount;
+        }
 
         public void Register(string Email)
         {
@@ -211,6 +222,7 @@ namespace BankStudentManagementApp
                     case 14: Case14_ScholarshipEligibility(); break;
                     case 15: Case15_FullBalanceTopUp(); break;
                     case 16: Case16_QuickAccountOpening(); break;
+                    case 17: Case17_TotalStudentsCounter(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -495,6 +507,11 @@ namespace BankStudentManagementApp
             BankAccount newAccount = new BankAccount(accNum, name, startBalance);
             Console.WriteLine("New account created:");
             newAccount.CheckBalance();
+        }
+
+        static void Case17_TotalStudentsCounter()
+        {
+            Console.WriteLine("Total students created: " + Student.GetStudentCount());
         }
     }
 }
