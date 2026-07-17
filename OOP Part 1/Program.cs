@@ -19,6 +19,11 @@ namespace BankStudentManagementApp
             Balance = startingBalance;
         }
 
+        public bool IsOverdrawn
+        {
+            get { return Balance < 0; }
+        }
+
         public void Deposit(double amount)
         {
             Balance += amount;
@@ -223,6 +228,7 @@ namespace BankStudentManagementApp
                     case 15: Case15_FullBalanceTopUp(); break;
                     case 16: Case16_QuickAccountOpening(); break;
                     case 17: Case17_TotalStudentsCounter(); break;
+                    case 18: Case18_OverdrawnCheck(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -451,6 +457,7 @@ namespace BankStudentManagementApp
                 Console.WriteLine("Sale successful. Total revenue: " + revenue);
             }
         }
+
         static void Case14_ScholarshipEligibility()
         {
             Console.WriteLine("Select student:");
@@ -493,6 +500,7 @@ namespace BankStudentManagementApp
                 Console.WriteLine("No top-up needed. Current balance: " + before);
             }
         }
+
         static void Case16_QuickAccountOpening()
         {
             Console.Write("Enter new account number: ");
@@ -512,6 +520,19 @@ namespace BankStudentManagementApp
         static void Case17_TotalStudentsCounter()
         {
             Console.WriteLine("Total students created: " + Student.GetStudentCount());
+        }
+
+        static void Case18_OverdrawnCheck()
+        {
+            BankAccount acc = SelectAccount();
+            if (acc.IsOverdrawn)
+            {
+                Console.WriteLine(acc.HolderName + "'s account is overdrawn.");
+            }
+            else
+            {
+                Console.WriteLine(acc.HolderName + "'s account is not overdrawn.");
+            }
         }
     }
 }
