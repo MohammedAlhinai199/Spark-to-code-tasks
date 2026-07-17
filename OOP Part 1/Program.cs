@@ -2,10 +2,64 @@
 
 namespace BankStudentManagementApp
 {
+    class BankAccount
+    {
+        public int AccountNumber;
+        public string HolderName;
+        public double Balance;
+
+        public void Deposit(double amount)
+        {
+            Balance += amount;
+            SendEmail();
+        }
+
+        public void Withdraw(double amount)
+        {
+            if (Balance >= amount)
+            {
+                Balance -= amount;
+            }
+            else
+            {
+                Console.WriteLine("Insufficient balance. Withdrawal cancelled.");
+            }
+            SendEmail();
+        }
+
+        public double CheckBalance()
+        {
+            PrintInformation();
+            return Balance;
+        }
+
+        private void PrintInformation()
+        {
+            Console.WriteLine("Account Holder: " + HolderName);
+            Console.WriteLine("Balance: " + Balance);
+        }
+
+        private void SendEmail()
+        {
+            Console.WriteLine("Email notification sent to " + HolderName + ".");
+        }
+    }
+
     class Program
     {
+        static BankAccount acc1 = new BankAccount();
+        static BankAccount acc2 = new BankAccount();
+
         static void Main(string[] args)
         {
+            acc1.AccountNumber = 1163;
+            acc1.HolderName = "karim";
+            acc1.Balance = 120;
+
+            acc2.AccountNumber = 15203;
+            acc2.HolderName = "Ali";
+            acc2.Balance = 63;
+
             bool running = true;
 
             while (running)
@@ -46,6 +100,9 @@ namespace BankStudentManagementApp
 
                 switch (choice)
                 {
+                    case 1: Case1_ViewAccountDetails(); break;
+                    case 3: Case3_MakeDeposit(); break;
+                    case 4: Case4_MakeWithdrawal(); break;
                     case 20:
                         running = false;
                         Console.WriteLine("Goodbye!");
@@ -55,6 +112,43 @@ namespace BankStudentManagementApp
                         break;
                 }
             }
+        }
+
+        static BankAccount SelectAccount()
+        {
+            Console.WriteLine("1. " + acc1.HolderName);
+            Console.WriteLine("2. " + acc2.HolderName);
+            Console.Write("Choose account (1 or 2): ");
+            int choice;
+            int.TryParse(Console.ReadLine(), out choice);
+            if (choice == 1) return acc1;
+            else return acc2;
+        }
+
+        static void Case1_ViewAccountDetails()
+        {
+            BankAccount acc = SelectAccount();
+            acc.CheckBalance();
+        }
+
+        static void Case3_MakeDeposit()
+        {
+            BankAccount acc = SelectAccount();
+            Console.Write("Enter deposit amount: ");
+            double amount;
+            double.TryParse(Console.ReadLine(), out amount);
+            acc.Deposit(amount);
+            Console.WriteLine(acc.HolderName + "'s new balance: " + acc.Balance);
+        }
+
+        static void Case4_MakeWithdrawal()
+        {
+            BankAccount acc = SelectAccount();
+            Console.Write("Enter withdrawal amount: ");
+            double amount;
+            double.TryParse(Console.ReadLine(), out amount);
+            acc.Withdraw(amount);
+            Console.WriteLine("Updated balance: " + acc.Balance);
         }
     }
 }
